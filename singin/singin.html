@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Telegram Web App Demo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Подключение Telegram Web App JS (они будут доступны внутри клиента Telegram) -->
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <div class="main">
+
+        <div class="section">
+            <h1> Вход </h1>
+            <div>Для подключения к системе "1С" введите свои учетные данные</div>
+        </div>
+        <hr>
+        <div class="section">
+            <input type="url" id="urlField" placeholder="Адрес сервера">
+        </div>
+        <div class="section">
+            <input type="url" id="publishField" placeholder="* Имя публикации">
+        </div>
+        <div class="section">
+            <input type="text" id="loginField" placeholder="* Логин">
+            <input type="password" id="passField" placeholder="* Пароль">
+        </div>
+    </div>
+
+
+    <script src="/general.js"></script>
+    <script src="singin.js"></script>
+
+
+</body>
+</html>

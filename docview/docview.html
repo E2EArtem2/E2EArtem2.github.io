@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Telegram Web App Demo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Подключение Telegram Web App JS (они будут доступны внутри клиента Telegram) -->
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="docview.css">
+</head>
+<body>
+    <div class="main">
+
+        <div class="section">
+            <h1 id="header"> Просмотр документа </h1>
+        </div>
+        <hr>
+        <div class="section">
+            <p class="center-align space-after">Заказчик</p>
+            <b>
+                <p id="Contragent" class="left-align space-after"></p>
+            </b>
+            <span>
+                <!--<p>Договор:</p>-->
+                <p id="DogovorZak"></p>
+            </span>
+            <span>
+                <!--<p>Приложение:</p>-->
+                <p id="DogovorZakPril"></p>
+            </span>
+        </div>
+        <div class="section">
+            <p class="center-align space-after">Поставщик</p>
+            <b><p id="Postavshik" class="left-align space-after"></p></b>
+            <span>
+                <!--<p>Договор:</p>-->
+                <p id="DogovorPost"></p>
+            </span>
+            <span>
+                <!--<p>Приложение:</p>-->
+                <p id="DogovorPostPril" class="left-align"></p>
+            </span>
+        </div>
+        <div class="section">
+
+            <span>
+                <p>Номер счета:</p>
+                <p id="SchetNomer"></p>
+            </span>
+            <span>
+                <strong><p>Сумма:</p></strong>
+                <strong>
+                    <div class="flex">
+                        <p id="Summa"></p>
+                        <p>&nbsp;</p>
+                        <p name="Valuta"></p>
+                    </div>
+                </strong>
+            </span>
+            <span>
+                <p>Ставка НДС:</p>
+                <p id="StavkaNDS"></p>
+            </span>
+            <span id="spanNDS">
+                <strong><p>В т.ч. НДС:</p></strong>
+                <strong>
+                    <div class="flex">
+                        <p id="SummaNDS"></p>
+                        <p>&nbsp;</p>
+                        <p name="Valuta"></p>
+                    </div>
+                </strong>
+            </span>
+            <span>
+                <p>Дата оплаты:</p>
+                <p id="DataOplaty"></p>
+            </span>
+
+        </div>
+
+
+        <div class="section">
+            <p class="center-align space-after">Комментарий</p>
+            <b><p id="Postavshik" class="left-align space-after"></p></b>
+            <span>
+                <p id="Usluga" class="left-align"></p>
+            </span>
+        </div>
+
+
+        <div class="section">
+            <span>
+                <p>Исполнитель:</p>
+                <p id="Ispolnitel"></p>
+            </span>
+        </div>
+
+
+
+
+    </div>
+
+
+
+
+    </div>
+
+
+    <script src="/general.js"></script>
+    <script src="docview.js"></script>
+
+
+</body>
+    </html>

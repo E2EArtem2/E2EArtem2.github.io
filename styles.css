@@ -1,0 +1,189 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    color: var(--tg-theme-text-color);
+    background: var(--tg-theme-secondary-bg-color);
+}
+
+.main {
+    width: 100%;
+    padding: 15px 10px 15px 10px;
+    text-align: center;
+}
+
+h1 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: large;
+}
+
+img {
+    width: 70px;
+    margin: 30px auto;
+}
+
+.btn {
+    border: 0;
+    border-radius: 5px;
+    margin-top: 50px;
+    height: 60px;
+    width: 200px;
+    font-style: 20px;
+    font-weight: 500;
+    cursor: pointer;
+    color: var(--tg-theme-button-text-color);
+    background: var(--tg-theme-button-color);
+}
+
+form {
+    text-align: center;
+}
+
+input {
+    outline: none;
+    border-radius: 5px;
+    border: 2px solid var(--tg-theme-button-color);
+    padding: 15px 10px;
+    margin: 10px 0 0;
+    background: var(--tg-theme-section-separator-color);
+    color: var(--tg-theme-text-color);
+    transition: all .2s;
+    width: 100%;
+}
+
+    input:focus {
+        border-color: var(--tg-theme-secondary-bg-color);
+    }
+
+textarea {
+    outline: none;
+    border-radius: 5px;
+    border: 2px solid var(--tg-theme-button-color);
+    padding: 15px 10px;
+    margin: 10px 0 0;
+    background: var(--tg-theme-section-separator-color);
+    color: var(--tg-theme-text-color);
+    transition: all .2s;
+    width: 100%;
+}
+
+    textarea:focus {
+        border-color: var(--tg-theme-secondary-bg-color);
+    }
+
+a[name="toDocButton"] {
+    cursor: pointer;
+}
+
+hr {
+    border: 1px solid var(--tg-theme-hint-color);
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+a {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    color: var(--tg-theme-link-color);
+    text-decoration: none;
+}
+
+.section {
+    background: var(--tg-theme-bg-color);
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+
+
+
+.checkbox-container {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+}
+/* Сетка для 2 столбцов */
+.checkbox-grid {
+    display: flex;
+    /*flex-wrap: wrap;*/
+    flex-direction: column;
+    gap: 10px;
+}
+/* Элемент каждого чекбокса, теперь используется <label> */
+.checkbox-item {
+    width: calc(50% - 10px);
+    /*background-color: var(--tg-theme-button-color);*/
+    padding: 12px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 10px; /* Если нужен border-radius для всего блока */
+    width: auto;
+}
+
+    /* Стилизация чекбокса */
+    .checkbox-item input[type="checkbox"] {
+        transform: scale(1.5);
+        margin: auto;
+        border: 1px solid var(--tg-theme-hint-color);
+        /* Убираем лишние стили браузера для абсолютного контроля (опционально) */
+        cursor: pointer;
+    }
+
+    .checkbox-item input[type="radio"] {
+        transform: scale(1.5);
+        margin: auto;
+        border: 1px solid var(--tg-theme-hint-color);
+        /* Убираем лишние стили браузера для абсолютного контроля (опционально) */
+        cursor: pointer;
+    }
+/* Текст, выровненный по центру */
+.checkbox-label {
+    flex-grow: 1;
+    text-align: left;
+    padding-left: 15px;
+    font-size: medium;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+.tabs {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+}
+
+.tab-button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #f1f1f1;
+    margin-right: 5px;
+    transition: background-color 0.3s;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+    .tab-button.active {
+        background-color: #ccc;
+        cursor: default;
+    }
+

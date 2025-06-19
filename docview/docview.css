@@ -1,0 +1,29 @@
+span {
+    display: flex;
+    justify-content: space-between;
+}
+div p {
+    text-align: right;
+}
+
+.left-align{
+    text-align: left;
+
+}
+.center-align {
+    text-align: center;
+}
+
+.space-after {
+    margin-bottom: 5px;
+}
+
+.flex {
+    display: flex;
+}
+
+.section hr {
+    border: 1px solid color-mix(in oklab, var(--tg-theme-hint-color) 10%, #ffffff 50%);
+    margin-top: 0px;
+    margin-bottom: 0px;
+}

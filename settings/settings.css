@@ -1,0 +1,47 @@
+/* Скрываем стандартный чекбокс */
+.switch input {
+    display: none;
+}
+
+/* Стилизация внешнего вида переключателя */
+.slider {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+    /* Фон переключателя */
+    .slider:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #ccc;
+        border-radius: 34px;
+        transition: background-color 0.4s;
+    }
+
+    /* Кнопка-переключатель */
+    .slider:after {
+        content: "";
+        position: absolute;
+        top: 4px;
+        left: 4px;
+        width: 26px;
+        height: 26px;
+        background-color: white;
+        border-radius: 50%;
+        transition: transform 0.4s;
+    }
+
+/* Изменение состояния при включении */
+input:checked + .slider:before {
+    background-color: #66bb6a;
+}
+
+input:checked + .slider:after {
+    transform: translateX(26px);
+}
