@@ -73,9 +73,9 @@ getValue('credentials')
         } else {
             console.log("Вы не авторизированны!");
             switch (window.location.href) {
-                case (window.location.origin + '/singin/singin.html'):
+                case (window.location.origin + '/singin/singin'):
                     break;
-                case (window.location.origin + '/settings/settings.html'):
+                case (window.location.origin + '/settings/settings'):
                     break;
                 default:
                 window.location.href = '/singin/singin.html';
@@ -95,9 +95,9 @@ getValue('UserUIN')
         } else {
             console.log("Вы не авторизированны!");
             switch (window.location.href) {
-                case (window.location.origin + '/singin/singin.html'):
+                case (window.location.origin + '/singin/singin'):
                     break;
-                case (window.location.origin + '/settings/settings.html'):
+                case (window.location.origin + '/settings/settings'):
                     break;
                 default:
                 window.location.href = '/singin/singin.html';
@@ -116,9 +116,9 @@ getValue('serverURL')
         } else {
             console.log("Вы не авторизированны!");
             switch (window.location.href) {
-                case (window.location.origin + '/singin/singin.html'):
+                case (window.location.origin + '/singin/singin'):
                     break;
-                case (window.location.origin + '/settings/settings.html'):
+                case (window.location.origin + '/settings/settings'):
                     break;
                 default:
                     window.location.href = '/singin/singin.html';
@@ -138,9 +138,9 @@ getValue('publishNAME')
         } else {
             console.log("Вы не авторизированны!");
             switch (window.location.href) {
-                case (window.location.origin + '/singin/singin.html'):
+                case (window.location.origin + '/singin/singin'):
                     break;
-                case (window.location.origin + '/settings/settings.html'):
+                case (window.location.origin + '/settings/settings'):
                     break;
                 default:
                     window.location.href = '/singin/singin.html';
