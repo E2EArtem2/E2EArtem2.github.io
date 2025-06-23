@@ -37,6 +37,7 @@ body {
 }
 
 .sz-content {
+    position: relative;
     --vertical-margin: 0.75rem;
     display: flex;
     justify-content: space-between;
@@ -66,12 +67,14 @@ body {
 }
 
 .text-part p {
+    font-size: 14px;
     height: 1.5rem;
     align-content: center;
     margin: 0;
     margin-bottom: var(--vertical-margin);
 }
 .text-part h3 {
+    font-size: 18px;
     color: var(--tg-theme-text-color);
     height: 1.5rem;
     align-content: center;
