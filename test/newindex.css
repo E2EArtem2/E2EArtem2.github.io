@@ -3,15 +3,19 @@ summary{
     background-color: var(--tg-theme-secondary-bg-color);
     order: 2; 
     cursor: pointer;
+    height: 30px;
 }
 
 details {
+    background-color: var(--tg-theme-secondary-bg-color);
     display: flex; 
     flex-direction: column
 }
 
 body {
+    font-family: "inter";
     margin: 0;
+    color: var(--tg-theme-text-color);
 }
 
 .sz-card {
@@ -28,6 +32,75 @@ body {
     top: 89px;
     left: 10%;
     position: absolute;
-    background-color: black;
+    background-color: var(--tg-theme-section-separator-color);
+    
+}
+
+.sz-content {
+    --vertical-margin: 0.75rem;
+    display: flex;
+    justify-content: space-between;
+    height: 100%;
+    padding-left: 10px;
+    color: var(--tg-theme-subtitle-text-color);
+}
+
+.summary {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: var(--vertical-margin);
+}
+
+.digit-part {
+    width: 20%;
+    display: flex; 
+    flex-direction: column;
+    justify-content: space-between
+}
+
+.text-part {
+    width: 80%;
+    display: flex; 
+    flex-direction: column;
+    justify-content: space-between
+}
+
+.text-part p {
+    height: 1.5rem;
+    align-content: center;
+    margin: 0;
+    margin-bottom: var(--vertical-margin);
+}
+.text-part h3 {
+    color: var(--tg-theme-text-color);
+    height: 1.5rem;
+    align-content: center;
+    margin: 0;
+    margin-top: var(--vertical-margin);
+}
+
+.digit-part p {
+    height: 1.5rem;
+    align-content: center;
+    margin: 0;
+    font-size: 12px;
+    text-align: center;
+}
+
+.digit-part .date {
+    margin-top: var(--vertical-margin);
+}
+
+
+.company-name {
+    display: flex; 
+}
+
+.color-circle {
+    margin: 0.4rem 5px 0 0;
+    height: 0.7rem;
+    width: 0.7rem;
+    border-radius: 0.35rem;
+    background-color: blue;
     
 }

@@ -108,7 +108,7 @@ function toDoc(event) {
 
 setTimeout(() => {
     console.log('Это сообщение появится через 2 секунды');
-    SBC();
+    //SBC();
 }, 500); // 2000 мс = 2 секунды
 
 function dateExpiredCheck(tagetDataString) {
