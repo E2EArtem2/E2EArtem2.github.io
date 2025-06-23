@@ -14,15 +14,15 @@ getValue('docList')
         if ((value != null) || (value != undefined) ) {
             const jsValue = JSON.parse(value);
             docList = jsValue;
-            showDocList(jsValue);
+            //showDocList(jsValue);
         } else {
-            SBC();
+            //SBC();
         }
     })
     .catch((error) => {
         console.log("Ошибка чтения сохраненных данных!", error);
         //tg.showAlert("Не удалось загрузить локальные данные ", error);
-        SBC();
+        //SBC();
     });
     
 

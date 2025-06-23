@@ -1,0 +1,33 @@
+summary{
+    list-style: none;
+    background-color: var(--tg-theme-secondary-bg-color);
+    order: 2; 
+    cursor: pointer;
+}
+
+details {
+    display: flex; 
+    flex-direction: column
+}
+
+body {
+    margin: 0;
+}
+
+.sz-card {
+    height: 90px;
+    width:100%;
+    background-color: var(--tg-theme-bg-color);
+    position: relative;
+}
+
+.sz-card .sz-border {
+    
+    height: 1px;
+    width: 90%;
+    top: 89px;
+    left: 10%;
+    position: absolute;
+    background-color: black;
+    
+}
