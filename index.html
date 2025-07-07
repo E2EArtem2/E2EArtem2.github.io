@@ -6,43 +6,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Подключение Telegram Web App JS (они будут доступны внутри клиента Telegram) -->
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
-    <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="newindex.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
     
 </head>
 <body>
-    <div class="main">
+    
+    <details id="search-spoiler">
+        
+        <p> Статусы СЗ </p>
+        <p> Поиск </p>
+        
+        <summary> <div class="arrow arrow-bottom"></div> </summary>
+    </details>
 
-        <div class="section">
-            <h1>Служебные записки:</h1>
-        </div>
-
-        <!--
-        <div class="section">
-            <div class="tabs">
-                <button class="tab-button active" onclick="openTab(event, 'tab1')"><b>Активные</b></button>
-                <button class="tab-button" onclick="openTab(event, 'tab2')"><b>Подписанные</b></button>
-                <button class="tab-button" onclick="openTab(event, 'tab3')"><b>На доработке</b></button>
-            </div>
-        </div>
-        -->
-
-        <hr>
-        <div id="DinamicContainer">
-
-        </div>
-
-
-
-
-    </div>
-
+    <div id="item-list"></div>
+    <!--
 
     <script src="/general.js"></script>
     <script src="/main.js"></script>
 
 
 
-
+    -->
 
 </body>
 </html>

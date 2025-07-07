@@ -125,3 +125,64 @@ function dateExpiredCheck(tagetDataString) {
     } 
     return true;
 }
+
+
+function stringToForm(sum, val){
+
+    let sumOrder = "";
+    let valOrder = ""
+    let sumDigit = "";
+
+    switch (sum.split(String.fromCharCode(160)).length){
+        case 1:
+            sumOrder = "";
+            break;
+        case 2:
+            sumOrder = "тыс";
+            break;
+        case 3:
+            sumOrder = "млн";
+            break;
+        case 4:
+            sumOrder = "млд";
+            break;
+    }
+
+    switch (val){
+        case "RUB":
+            valOrder = "₽";
+            break;
+        case "USD":
+            valOrder = "$";
+            break;
+        default:
+            valOrder = "?";
+            break;
+    }
+
+    if (sumOrder != ""){
+        dotIndex = sum.indexOf(String.fromCharCode(160));
+
+        switch (dotIndex){
+        case 1:
+            sumDigit = sum.slice(0, 1) + "." + sum.slice(2, 4);
+            break;
+        case 2:
+            sumDigit = sum.slice(0, 2) + "." + sum.slice(3, 4);
+            break;
+        case 3:
+            sumDigit = sum.slice(0, 3);
+            break;
+    }
+
+        if (dotIndex >= 3){
+            sumDigit = sum.slice(0, dotIndex);
+        } else {
+            sumDigit = sum.slice(0, dotIndex) + '.' + sum.slice(dotIndex+1, dotIndex)
+        }
+
+
+
+    }
+    
+}
