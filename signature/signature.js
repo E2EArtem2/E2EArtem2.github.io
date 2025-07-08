@@ -8,34 +8,14 @@ tg.BackButton.onClick(() => {
 tg.BackButton.show();
 
 tg.MainButton.setText("Подписать");
-tg.MainButton.onClick(MBC);
+
+
 tg.MainButton.disable();
 tg.MainButton.color = tg.themeParams.hint_color;
 
 tg.BiometricManager.init();
 
-/*
-tg.SecondaryButton.setText("Подписать биометрией");
-tg.SecondaryButton.onClick(() => {
-    
-    if (tg.BiometricManager.isAccessGranted) {
-        tg.BiometricManager.authenticate(
-            { reason: "Для подписания документа через биометрию" },
-            (success, token) => {
-                if (success) {
-                    MBC(success);
-                }
-            }
-        )
-    } else {
-        tg.BiometricManager.requestAccess(
-            { reason: "Предоставьте доступ к биометрии для подписания документов" }
-        )
-    }
-    
-});
-tg.SecondaryButton.position = "bottom";
-tg.SecondaryButton.show();*/
+
 tg.SecondaryButton.hide();
 
 var signed = false;
@@ -94,38 +74,9 @@ document.getElementById('passField').addEventListener('input', function () {
     }
 });
 
-/*
-function secondaryButtonShow() {
-    tg.SecondaryButton.onClick(() => {
-        window.location.href = '/index.html';
-    });
-    tg.SecondaryButton.setText("Обновить список документов");
-    tg.SecondaryButton.show();
-}
-*/
 
-function MBC(isBiometric) {
-    
 
-    if (signed) {
-        window.location.href = '/index.html';
-    } else {
-        document.getElementById('header').focus();
-        
 
-        //UserID/SzUIN/Пароль который вводит при подписании СЗ"
-
-        if (isBiometric) {
-            let url = serverURL + publishNAME +"hs/sz/sign/" + UserUIN.toString() + "/" + doc.UIN.toString() + "/123" ;
-            doFetch(url);
-        } else {
-            
-        }
-          
-        
-        
-    }
-}
 
 
 function passSignature() {
