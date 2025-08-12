@@ -38,10 +38,10 @@
 
             <div class="digital-part">
                 <div class="topline">
-                    2111.11.11
+                    <p class="date">2111.11.11</p>
                 </div>
                 <div class="bottomline">
-                    <p><span class="value">1.11</span> <span class="numeric-rank">млн.</span> <span class="currency">₽</span></p>
+                    <p class="summary"><span class="value">1.11</span> <span class="numeric-rank">млн.</span> <span class="currency">₽</span></p>
                 </div>
             </div>
         </div>
@@ -81,8 +81,6 @@
                  white-space: nowrap;
                  overflow: hidden;
                  text-overflow: ellipsis;
-                 flex: 1;
-                 min-width: 0;
              }
             .digital-part {
                 flex: 0 0 20%;
@@ -98,7 +96,14 @@
                 align-content: center;
                 display: flex;
             }
-           
+            .date {
+                width: 100%;
+                text-align: center;
+            }
+            .summary {
+                width: 100%;
+                text-align: center;
+            }
         </style>
         
     </div>
