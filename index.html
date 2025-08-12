@@ -31,7 +31,7 @@
                     <h3>СЗ № X/Y-YY/ZZZZ-gen</h3>
                 </div>
                 <div class="bottomline">
-                    <div class="circle" style="width:12px; height:12px; border-radius:50%; background:#000; display:inline-block;"></div>
+                    <div class="circle"></div>
                     <p class="company-name">ООО "Новороссийский припортовый терминал"</p>
                 </div>
             </div> 
@@ -60,10 +60,19 @@
             .textpart {
                 flex: 0 0 80%;
                 max-width: 80%;
+                padding-left: 10px;
             }
             .textpart h3 {
                 font-size: 18px;
                 margin: 0;
+            }
+            .circle {
+                width: 12px;
+                height: 12px;
+                border-radius: 50%;
+                background: #000;
+                display: inline-block;
+                margin-right: 3px;
             }
             .textpart p {
                  font-size: 14px;
@@ -72,6 +81,8 @@
                  white-space: nowrap;
                  overflow: hidden;
                  text-overflow: ellipsis;
+                 flex: 1;
+                 min-width: 0;
              }
             .digital-part {
                 flex: 0 0 20%;
