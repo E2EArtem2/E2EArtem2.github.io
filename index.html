@@ -24,7 +24,7 @@
 
     <div id="item-list">
 
-        <div class="sz-card">
+        <div class="sz-card" data-sz-id="1">
             <div class="textpart">
                 <div class="topline">
                     <h3>СЗ № X/Y-YY/ZZZZ-gen</h3>
@@ -44,10 +44,33 @@
                 </div>
             </div>
         </div>
+        
         <div class="sz-separator">
-
         </div>
 
+        <div class="sz-card" data-sz-id="2">
+            <div class="textpart">
+                <div class="topline">
+                    <h3>СЗ № A/B-CC/DDDD-gen</h3>
+                </div>
+                <div class="bottomline">
+                    <div class="circle"></div>
+                    <p class="company-name">ООО "Другая компания"</p>
+                </div>
+            </div> 
+
+            <div class="digital-part">
+                <div class="topline">
+                    <p class="date">2024.01.15</p>
+                </div>
+                <div class="bottomline">
+                    <p class="summary">2.5 млн ₽</span></p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="sz-separator">
+        </div>
 
         <style>
             p{
@@ -56,8 +79,19 @@
             .sz-card {
                 width: 100%;
                 height: 89px;
-                background-color: #fff;
+                background-color: var(--tg-theme-bg-color);
                 display: flex;
+                position: relative;
+                transition: transform 0.3s ease;
+                cursor: grab;
+                user-select: none;
+                touch-action: pan-y;
+            }
+            .sz-card:active {
+                cursor: grabbing;
+            }
+            .sz-card.swiping {
+                transition: none;
             }
             .textpart {
                 flex: 0 0 80%;
@@ -113,22 +147,169 @@
                 text-align: center;
             }
 
-
-
-
             .sz-separator {
                 height: 1px;
                 width: 100%;
-                background-color: #000;
+                background-color: var(--tg-theme-section-separator-color);
                 padding-left: 40px;
             }
-
-
-
         </style>
         
     </div>
 
+    <script>
+        // Класс для управления свайпами
+        class SwipeManager {
+            constructor() {
+                this.startX = 0;
+                this.startY = 0;
+                this.currentX = 0;
+                this.currentY = 0;
+                this.isSwiping = false;
+                this.swipeThreshold = 100; // Дистанция свайпа 100px
+                this.currentCard = null;
+                
+                this.init();
+            }
+            
+            init() {
+                // Находим все карточки
+                const cards = document.querySelectorAll('.sz-card');
+                
+                cards.forEach(card => {
+                    // События для мыши
+                    card.addEventListener('mousedown', (e) => this.handleStart(e, card));
+                    card.addEventListener('mousemove', (e) => this.handleMove(e));
+                    card.addEventListener('mouseup', (e) => this.handleEnd(e));
+                    card.addEventListener('mouseleave', (e) => this.handleEnd(e));
+                    
+                    // События для касаний
+                    card.addEventListener('touchstart', (e) => this.handleStart(e, card));
+                    card.addEventListener('touchmove', (e) => this.handleMove(e));
+                    card.addEventListener('touchend', (e) => this.handleEnd(e));
+                    
+                    // Предотвращаем контекстное меню
+                    card.addEventListener('contextmenu', (e) => e.preventDefault());
+                });
+            }
+            
+            handleStart(e, card) {
+                e.preventDefault();
+                
+                this.currentCard = card;
+                this.isSwiping = true;
+                card.classList.add('swiping');
+                
+                // Получаем начальные координаты
+                if (e.type === 'touchstart') {
+                    this.startX = e.touches[0].clientX;
+                    this.startY = e.touches[0].clientY;
+                } else {
+                    this.startX = e.clientX;
+                    this.startY = e.clientY;
+                }
+                
+                this.currentX = this.startX;
+                this.currentY = this.startY;
+            }
+            
+            handleMove(e) {
+                if (!this.isSwiping || !this.currentCard) return;
+                
+                e.preventDefault();
+                
+                // Получаем текущие координаты
+                if (e.type === 'touchmove') {
+                    this.currentX = e.touches[0].clientX;
+                    this.currentY = e.touches[0].clientY;
+                } else {
+                    this.currentX = e.clientX;
+                    this.currentY = e.clientY;
+                }
+                
+                // Вычисляем смещение
+                const deltaX = this.currentX - this.startX;
+                const deltaY = this.currentY - this.startY;
+                
+                // Проверяем, что движение больше горизонтальное, чем вертикальное
+                if (Math.abs(deltaX) > Math.abs(deltaY)) {
+                    // Применяем трансформацию для визуальной обратной связи
+                    const transformX = Math.max(-50, Math.min(50, deltaX * 0.3));
+                    this.currentCard.style.transform = `translateX(${transformX}px)`;
+                }
+            }
+            
+            handleEnd(e) {
+                if (!this.isSwiping || !this.currentCard) return;
+                
+                e.preventDefault();
+                
+                // Вычисляем финальное смещение
+                const deltaX = this.currentX - this.startX;
+                const deltaY = this.currentY - this.startY;
+                
+                // Сбрасываем трансформацию
+                this.currentCard.style.transform = '';
+                this.currentCard.classList.remove('swiping');
+                
+                // Проверяем условия для свайпа
+                if (Math.abs(deltaX) >= this.swipeThreshold && Math.abs(deltaX) > Math.abs(deltaY)) {
+                    // Определяем направление свайпа
+                    if (deltaX > 0) {
+                        this.handleSwipeRight(this.currentCard);
+                    } else {
+                        this.handleSwipeLeft(this.currentCard);
+                    }
+                }
+                
+                // Сбрасываем состояние
+                this.isSwiping = false;
+                this.currentCard = null;
+            }
+            
+            handleSwipeLeft(card) {
+                const szId = card.getAttribute('data-sz-id');
+                console.log(`Свайп влево для СЗ ${szId}`);
+                
+                // Здесь можно добавить логику для свайпа влево
+                // Например, показать меню действий, удалить карточку и т.д.
+                
+                // Пример: анимация удаления
+                card.style.transform = 'translateX(-100%)';
+                card.style.opacity = '0';
+                setTimeout(() => {
+                    card.remove();
+                    // Удаляем следующий разделитель, если он есть
+                    const nextSeparator = card.nextElementSibling;
+                    if (nextSeparator && nextSeparator.classList.contains('sz-separator')) {
+                        nextSeparator.remove();
+                    }
+                }, 300);
+            }
+            
+            handleSwipeRight(card) {
+                const szId = card.getAttribute('data-sz-id');
+                console.log(`Свайп вправо для СЗ ${szId}`);
+                
+                // Здесь можно добавить логику для свайпа вправо
+                // Например, отметить как избранное, архивировать и т.д.
+                
+                // Пример: изменение цвета кружка
+                const circle = card.querySelector('.circle');
+                if (circle) {
+                    circle.style.background = '#4CAF50';
+                    setTimeout(() => {
+                        circle.style.background = '#000';
+                    }, 1000);
+                }
+            }
+        }
+        
+        // Инициализируем менеджер свайпов после загрузки DOM
+        document.addEventListener('DOMContentLoaded', () => {
+            new SwipeManager();
+        });
+    </script>
 
     <!--
     <script src="/general.js"></script>
