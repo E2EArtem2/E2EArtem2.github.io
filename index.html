@@ -25,6 +25,8 @@
     <div id="item-list">
 
         <div class="sz-card" data-sz-id="1">
+            <div class="action-plate blue">УДАЛИТЬ</div>
+            <div class="action-plate red">АРХИВ</div>
             <div class="textpart">
                 <div class="topline">
                     <h3>СЗ № X/Y-YY/ZZZZ-gen</h3>
@@ -49,6 +51,8 @@
         </div>
 
         <div class="sz-card" data-sz-id="2">
+            <div class="action-plate blue">УДАЛИТЬ</div>
+            <div class="action-plate red">АРХИВ</div>
             <div class="textpart">
                 <div class="topline">
                     <h3>СЗ № A/B-CC/DDDD-gen</h3>
@@ -153,6 +157,48 @@
                 background-color: var(--tg-theme-section-separator-color);
                 padding-left: 40px;
             }
+
+            .action-plate {
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: white;
+                font-weight: bold;
+                font-size: 16px;
+                z-index: 1;
+                opacity: 0;
+                transition: opacity 0.3s ease;
+            }
+
+            .action-plate.blue {
+                background-color: #2196F3;
+            }
+
+            .action-plate.red {
+                background-color: #F44336;
+            }
+
+            .action-plate.show {
+                opacity: 1;
+            }
+
+            .sz-card {
+                width: 100%;
+                height: 89px;
+                background-color: var(--tg-theme-bg-color);
+                display: flex;
+                position: relative;
+                transition: transform 0.3s ease;
+                cursor: grab;
+                user-select: none;
+                touch-action: pan-y;
+                overflow: hidden;
+            }
         </style>
         
     </div>
@@ -236,6 +282,24 @@
                     // Применяем трансформацию для визуальной обратной связи
                     const transformX = Math.max(-50, Math.min(50, deltaX * 0.3));
                     this.currentCard.style.transform = `translateX(${transformX}px)`;
+                    
+                    // Показываем соответствующую плашку
+                    const bluePlate = this.currentCard.querySelector('.action-plate.blue');
+                    const redPlate = this.currentCard.querySelector('.action-plate.red');
+                    
+                    if (deltaX < -20) {
+                        // Свайп влево - показываем синюю плашку
+                        if (bluePlate) bluePlate.classList.add('show');
+                        if (redPlate) redPlate.classList.remove('show');
+                    } else if (deltaX > 20) {
+                        // Свайп вправо - показываем красную плашку
+                        if (redPlate) redPlate.classList.add('show');
+                        if (bluePlate) bluePlate.classList.remove('show');
+                    } else {
+                        // Скрываем обе плашки
+                        if (bluePlate) bluePlate.classList.remove('show');
+                        if (redPlate) redPlate.classList.remove('show');
+                    }
                 }
             }
             
@@ -247,6 +311,12 @@
                 // Вычисляем финальное смещение
                 const deltaX = this.currentX - this.startX;
                 const deltaY = this.currentY - this.startY;
+                
+                // Скрываем все плашки
+                const bluePlate = this.currentCard.querySelector('.action-plate.blue');
+                const redPlate = this.currentCard.querySelector('.action-plate.red');
+                if (bluePlate) bluePlate.classList.remove('show');
+                if (redPlate) redPlate.classList.remove('show');
                 
                 // Сбрасываем трансформацию
                 this.currentCard.style.transform = '';
@@ -271,16 +341,19 @@
                 const szId = card.getAttribute('data-sz-id');
                 console.log(`Свайп влево для СЗ ${szId}`);
                 
-                // Здесь можно добавить логику для свайпа влево
-                // Например, показать меню действий, удалить карточку и т.д.
+                // Показываем синюю плашку на полную видимость
+                const bluePlate = card.querySelector('.action-plate.blue');
+                if (bluePlate) {
+                    bluePlate.classList.add('show');
+                }
                 
-                // Пример: анимация удаления
+                // Анимация удаления
                 card.style.transform = 'translateX(-100%)';
                 card.style.opacity = '0';
                 setTimeout(() => {
-                    card.remove();
+                    //card.remove();
                     // Удаляем следующий разделитель, если он есть
-                    const nextSeparator = card.nextElementSibling;
+                    //const nextSeparator = card.nextElementSibling;
                     if (nextSeparator && nextSeparator.classList.contains('sz-separator')) {
                         nextSeparator.remove();
                     }
@@ -291,8 +364,11 @@
                 const szId = card.getAttribute('data-sz-id');
                 console.log(`Свайп вправо для СЗ ${szId}`);
                 
-                // Здесь можно добавить логику для свайпа вправо
-                // Например, отметить как избранное, архивировать и т.д.
+                // Показываем красную плашку на полную видимость
+                const redPlate = card.querySelector('.action-plate.red');
+                if (redPlate) {
+                    redPlate.classList.add('show');
+                }
                 
                 // Пример: изменение цвета кружка
                 const circle = card.querySelector('.circle');
