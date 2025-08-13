@@ -161,9 +161,8 @@
             .action-plate {
                 position: absolute;
                 top: 0;
-                left: 0;
-                right: 0;
-                bottom: 0;
+                height: 100%;
+                width: 100px;
                 display: flex;
                 align-items: center;
                 justify-content: center;
@@ -172,19 +171,29 @@
                 font-size: 16px;
                 z-index: 1;
                 opacity: 0;
-                transition: opacity 0.3s ease;
+                transition: all 0.3s ease;
             }
 
             .action-plate.blue {
                 background-color: #2196F3;
+                left: -100px;
             }
 
             .action-plate.red {
                 background-color: #F44336;
+                right: -100px;
             }
 
             .action-plate.show {
                 opacity: 1;
+            }
+
+            .action-plate.blue.show {
+                left: 0;
+            }
+
+            .action-plate.red.show {
+                right: 0;
             }
 
             .sz-card {
@@ -280,7 +289,7 @@
                 // Проверяем, что движение больше горизонтальное, чем вертикальное
                 if (Math.abs(deltaX) > Math.abs(deltaY)) {
                     // Применяем трансформацию для визуальной обратной связи
-                    const transformX = Math.max(-50, Math.min(50, deltaX * 0.3));
+                    const transformX = Math.max(-100, Math.min(100, deltaX * 0.5));
                     this.currentCard.style.transform = `translateX(${transformX}px)`;
                     
                     // Показываем соответствующую плашку
