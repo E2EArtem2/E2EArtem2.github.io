@@ -54,24 +54,28 @@
         <div class="sz-card" data-sz-id="2">
             
             <div class="action-plate red">На доработку</div>
-            <div class="textpart">
-                <div class="topline">
-                    <h3>СЗ № A/B-CC/DDDD-gen</h3>
-                </div>
-                <div class="bottomline">
-                    <div class="circle"></div>
-                    <p class="company-name">ООО "Другая компания"</p>
-                </div>
-            </div> 
 
-            <div class="digital-part">
-                <div class="topline">
-                    <p class="date">2024.01.15</p>
-                </div>
-                <div class="bottomline">
-                    <p class="summary">2.5 млн ₽</span></p>
+            <div class="sz-part"> 
+                <div class="textpart">
+                    <div class="topline">
+                        <h3>СЗ № A/B-CC/DDDD-gen</h3>
+                    </div>
+                    <div class="bottomline">
+                        <div class="circle"></div>
+                        <p class="company-name">ООО "Другая компания"</p>
+                    </div>
+                </div> 
+
+                <div class="digital-part">
+                    <div class="topline">
+                        <p class="date">2024.01.15</p>
+                    </div>
+                    <div class="bottomline">
+                        <p class="summary">2.5 млн ₽</span></p>
+                    </div>
                 </div>
             </div>
+
             <div class="action-plate blue">Подписать</div>
         </div>
         
@@ -173,7 +177,6 @@
             }
 
             .sz-card {
-                width: calc(100% + 200px);
                 height: 89px;
                 background-color: var(--tg-theme-bg-color);
                 display: flex;
@@ -185,6 +188,14 @@
                 overflow: hidden;
                 left: -100px;
             }
+
+            sz-part{
+                display: flex;
+                width: 100vw;
+                height: 89px;
+                background-color: var(--tg-theme-bg-color);
+            }
+
         </style>
         
     </div>
