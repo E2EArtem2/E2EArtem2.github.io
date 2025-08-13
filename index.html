@@ -176,12 +176,12 @@
 
             .action-plate.blue {
                 background-color: #2196F3;
-                left: -100px;
+                right: -100px;
             }
 
             .action-plate.red {
                 background-color: #F44336;
-                right: -100px;
+                left: -100px;
             }
 
             .action-plate.show {
@@ -189,11 +189,11 @@
             }
 
             .action-plate.blue.show {
-                left: 0;
+                right: 0;
             }
 
             .action-plate.red.show {
-                right: 0;
+                left: 0;
             }
 
             .sz-card {
@@ -297,13 +297,13 @@
                     const redPlate = this.currentCard.querySelector('.action-plate.red');
                     
                     if (deltaX < -20) {
-                        // Свайп влево - показываем синюю плашку
-                        if (bluePlate) bluePlate.classList.add('show');
-                        if (redPlate) redPlate.classList.remove('show');
-                    } else if (deltaX > 20) {
-                        // Свайп вправо - показываем красную плашку
+                        // Свайп влево - показываем красную плашку (архив)
                         if (redPlate) redPlate.classList.add('show');
                         if (bluePlate) bluePlate.classList.remove('show');
+                    } else if (deltaX > 20) {
+                        // Свайп вправо - показываем синюю плашку (удалить)
+                        if (bluePlate) bluePlate.classList.add('show');
+                        if (redPlate) redPlate.classList.remove('show');
                     } else {
                         // Скрываем обе плашки
                         if (bluePlate) bluePlate.classList.remove('show');
@@ -350,10 +350,10 @@
                 const szId = card.getAttribute('data-sz-id');
                 console.log(`Свайп влево для СЗ ${szId}`);
                 
-                // Показываем синюю плашку на полную видимость
-                const bluePlate = card.querySelector('.action-plate.blue');
-                if (bluePlate) {
-                    bluePlate.classList.add('show');
+                // Показываем красную плашку на полную видимость (архив)
+                const redPlate = card.querySelector('.action-plate.red');
+                if (redPlate) {
+                    redPlate.classList.add('show');
                 }
                 
                 // Анимация удаления
@@ -373,10 +373,10 @@
                 const szId = card.getAttribute('data-sz-id');
                 console.log(`Свайп вправо для СЗ ${szId}`);
                 
-                // Показываем красную плашку на полную видимость
-                const redPlate = card.querySelector('.action-plate.red');
-                if (redPlate) {
-                    redPlate.classList.add('show');
+                // Показываем синюю плашку на полную видимость (удалить)
+                const bluePlate = card.querySelector('.action-plate.blue');
+                if (bluePlate) {
+                    bluePlate.classList.add('show');
                 }
                 
                 // Пример: изменение цвета кружка
