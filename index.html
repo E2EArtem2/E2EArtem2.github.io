@@ -25,8 +25,8 @@
     <div id="item-list">
 
         <div class="sz-card" data-sz-id="1">
-            <div class="action-plate blue">УДАЛИТЬ</div>
-            <div class="action-plate red">АРХИВ</div>
+            
+            <div class="action-plate red">На доработку</div>
             <div class="textpart">
                 <div class="topline">
                     <h3>СЗ № X/Y-YY/ZZZZ-gen</h3>
@@ -45,14 +45,15 @@
                     <p class="summary">1.11 млн ₽</span></p>
                 </div>
             </div>
+            <div class="action-plate blue">Подписать</div>
         </div>
         
         <div class="sz-separator">
         </div>
 
         <div class="sz-card" data-sz-id="2">
-            <div class="action-plate blue">УДАЛИТЬ</div>
-            <div class="action-plate red">АРХИВ</div>
+            
+            <div class="action-plate red">На доработку</div>
             <div class="textpart">
                 <div class="topline">
                     <h3>СЗ № A/B-CC/DDDD-gen</h3>
@@ -71,6 +72,7 @@
                     <p class="summary">2.5 млн ₽</span></p>
                 </div>
             </div>
+            <div class="action-plate blue">Подписать</div>
         </div>
         
         <div class="sz-separator">
@@ -158,46 +160,20 @@
                 padding-left: 40px;
             }
 
+            
             .action-plate {
-                position: fixed;
-                top: 0;
                 height: 89px;
                 width: 100px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                color: white;
-                font-weight: bold;
-                font-size: 16px;
-                z-index: 1;
-                opacity: 0;
-                transition: all 0.3s ease;
             }
-
-            .action-plate.blue {
-                background-color: #2196F3;
-                left: -200px;
+            .action-plate.red{
+                background-color: red;
             }
-
-            .action-plate.red {
-                background-color: #F44336;
-                right: -100px;
-            }
-
-            .action-plate.show {
-                opacity: 1;
-            }
-
-            .action-plate.blue.show {
-                left: -100px;
-            }
-
-            .action-plate.red.show {
-                right: 0;
+            .action-plate.blue{
+                background-color: blue;
             }
 
             .sz-card {
-                width: 100%;
+                width: calc(100% + 200px);
                 height: 89px;
                 background-color: var(--tg-theme-bg-color);
                 display: flex;
@@ -207,6 +183,7 @@
                 user-select: none;
                 touch-action: pan-y;
                 overflow: hidden;
+                left: 100px;
             }
         </style>
         
