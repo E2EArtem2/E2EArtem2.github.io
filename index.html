@@ -353,6 +353,13 @@
             handleSwipeLeft(card) {
                 const szId = card.getAttribute('data-sz-id');
                 console.log(`Свайп влево для СЗ ${szId}`);
+
+                window.location.href = "/test/newsignature.html"
+
+
+                /*
+                const szId = card.getAttribute('data-sz-id');
+                console.log(`Свайп влево для СЗ ${szId}`);
                 
                 // Показываем красную плашку на полную видимость (архив)
                 const redPlate = card.querySelector('.action-plate.red');
@@ -371,11 +378,14 @@
                         nextSeparator.remove();
                     }
                 }, 300);
+                */
             }
             
             handleSwipeRight(card) {
                 const szId = card.getAttribute('data-sz-id');
                 console.log(`Свайп вправо для СЗ ${szId}`);
+
+                window.location.href = "/test/newrework.html"
 
             /*
                 const szId = card.getAttribute('data-sz-id');
