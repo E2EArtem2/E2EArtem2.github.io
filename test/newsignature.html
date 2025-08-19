@@ -59,6 +59,19 @@
         </div>
     </div>
 
+    <div id="pass-block" >
+
+        <div class="back-20 top-radius">
+            Подпись
+        </div>
+        <div class="back-40">
+            <input id="pass-field" type="password">
+        </div>
+        <div class="back-20 bottom-radius">
+            Для активации биометрии, <a href="/settings/settings.html">перейдите в настройки</a> 
+        </div>
+    </div>
+
 
 
 
@@ -119,6 +132,22 @@
 
         #sz-id {
             font-size: 18px;
+        }
+
+        .hidden{
+            visibility: hidden;
+        }
+
+        #pass-field{
+            outline: none;
+            border-radius: 5px;
+            border: 2px solid var(--tg-theme-button-color);
+            padding: 15px 10px;
+            margin: 10px 0 0;
+            background: var(--tg-theme-section-separator-color);
+            color: var(--tg-theme-text-color);
+            transition: all .2s;
+            width: 100%;
         }
 
 
