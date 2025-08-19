@@ -40,6 +40,24 @@
 
     </div>
 
+    <div class="flex-container top-radius bottom-radius">
+        <div class="width-75">
+            <div class="back-20">
+                Исполнитель
+            </div>
+            <div class="back-40">
+                Васильков Лавренитий Петрович
+            </div>
+        </div>
+        <div class="width-25">
+            <div class="back-20">
+                Сумма
+            </div>
+            <div class="back-40">
+                3.21 млн ₽
+            </div>
+        </div>
+    </div>
 
 
 
@@ -65,7 +83,7 @@
         }
         .back-20 {
             width: 100%;
-            height: 40px;
+            height: 20px;
             background-color: var(--tg-theme-bg-color);
             text-align: center;
             align-content: center;
@@ -86,6 +104,17 @@
             height: 1px;
             width: 100%;
             background-color: var(--tg-theme-section-separator-color);
+        }
+
+        .flex-container {
+            display: flex;
+        }
+        
+        .width-75{
+            width: 75%;
+        }
+        .width-25{
+            width: 25%;
         }
 
         #sz-id {
