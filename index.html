@@ -219,6 +219,21 @@
     
 
     <script>
+        //Обработка кликов по sz-card
+        // Найти все элементы с классом sz-card и сформировать из них массив
+        const cards = document.querySelectorAll('.sz-card');
+        cards.forEach(card => {
+            card.addEventListener('click', function(e) {
+                const szId = this.getAttribute('data-sz-id');
+                console.log(`Свайп влево для СЗ ${szId}`);
+
+                window.location.href = "/test/newdocview.html"
+            });
+        });
+
+
+
+
         // Класс для управления свайпами
         class SwipeManager {
             constructor() {
