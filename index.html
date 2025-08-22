@@ -221,12 +221,22 @@
     <script>
         //Обработка кликов по sz-card
         // Найти все элементы с классом sz-card и сформировать из них массив
+        let swipeManager; // Глобальная ссылка на менеджер свайпов для подавления кликов после жестов
         const cards = document.querySelectorAll('.sz-card');
         cards.forEach(card => {
             card.addEventListener('click', function(e) {
-                const szId = this.getAttribute('data-sz-id');
-                console.log(`Свайп влево для СЗ ${szId}`);
+                // Если был свайп или заметное горизонтальное перемещение — подавляем click
+                if (swipeManager && (swipeManager.swipeHandled || swipeManager.hasMoved)) {
+                    e.stopPropagation();
+                    e.preventDefault();
+                    // Сбрасываем флаги, чтобы следующий клик работал нормально
+                    swipeManager.swipeHandled = false;
+                    swipeManager.hasMoved = false;
+                    return;
+                }
 
+                const szId = this.getAttribute('data-sz-id');
+                console.log(`Клик по СЗ ${szId}`);
                 window.location.href = "/test/newdocview.html"
             });
         });
@@ -244,6 +254,8 @@
                 this.isSwiping = false;
                 this.swipeThreshold = 100; // Дистанция свайпа 100px
                 this.currentCard = null;
+                this.hasMoved = false; // было ли существенное горизонтальное движение
+                this.swipeHandled = false; // был ли совершен свайп-экшен
                 
                 this.init();
             }
@@ -261,7 +273,8 @@
                     
                     // События для касаний
                     card.addEventListener('touchstart', (e) => this.handleStart(e, card));
-                    card.addEventListener('touchmove', (e) => this.handleMove(e));
+                    // passive:false, чтобы можно было вызвать preventDefault() при горизонтальном свайпе
+                    card.addEventListener('touchmove', (e) => this.handleMove(e), { passive: false });
                     card.addEventListener('touchend', (e) => this.handleEnd(e));
                     
                     // Предотвращаем контекстное меню
@@ -270,11 +283,11 @@
             }
             
             handleStart(e, card) {
-                e.preventDefault();
-                
                 this.currentCard = card;
                 this.isSwiping = true;
                 card.classList.add('swiping');
+                this.hasMoved = false;
+                this.swipeHandled = false;
                 
                 // Получаем начальные координаты
                 if (e.type === 'touchstart') {
@@ -292,8 +305,6 @@
             handleMove(e) {
                 if (!this.isSwiping || !this.currentCard) return;
                 
-                e.preventDefault();
-                
                 // Получаем текущие координаты
                 if (e.type === 'touchmove') {
                     this.currentX = e.touches[0].clientX;
@@ -309,6 +320,11 @@
                 
                 // Проверяем, что движение больше горизонтальное, чем вертикальное
                 if (Math.abs(deltaX) > Math.abs(deltaY)) {
+                    // Если горизонтальное смещение заметное — помечаем движение и предотвращаем скролл
+                    if (Math.abs(deltaX) > 5) {
+                        this.hasMoved = true;
+                        if (e.cancelable) e.preventDefault();
+                    }
                     // Применяем трансформацию для визуальной обратной связи
                     const transformX = Math.max(-100, Math.min(100, deltaX * 0.5));
                     this.currentCard.style.transform = `translateX(${transformX}px)`;
@@ -335,8 +351,6 @@
             
             handleEnd(e) {
                 if (!this.isSwiping || !this.currentCard) return;
-                
-                e.preventDefault();
                 
                 // Вычисляем финальное смещение
                 const deltaX = this.currentX - this.startX;
@@ -370,7 +384,7 @@
             handleSwipeLeft(card) {
                 const szId = card.getAttribute('data-sz-id');
                 console.log(`Свайп влево для СЗ ${szId}`);
-
+                this.swipeHandled = true;
                 window.location.href = "/test/newsignature.html"
 
 
@@ -401,7 +415,7 @@
             handleSwipeRight(card) {
                 const szId = card.getAttribute('data-sz-id');
                 console.log(`Свайп вправо для СЗ ${szId}`);
-
+                this.swipeHandled = true;
                 window.location.href = "/test/newrework.html"
 
             /*
@@ -428,7 +442,7 @@
         
         // Инициализируем менеджер свайпов после загрузки DOM
         document.addEventListener('DOMContentLoaded', () => {
-            new SwipeManager();
+            swipeManager = new SwipeManager();
         });
     </script>
 
