@@ -14,72 +14,49 @@
 </head>
 <body>
 
-    <div id="company-name" class="back-40">
-        ООО "Новороссийский припортовый терминал"
-    </div>
-    <div id="sz-id" class="back-40 bottom-radius">
-        СЗ № X / Y-YY/ZZZZ-gen
+    <div class="back-40 bottom-radius">
+        Авторизация
     </div>
 
     <div>
-        <div class="back-20 top-radius">
-            Поставщик
+        Сервер
+    </div>
+    <div class="flex-container">
+        <div class="width-50">
+            <div class="back-40">
+                <input id="address-field" class="text-field" type="text">
+            </div>
         </div>
-        <div class="back-40">
-            ТрансСервис Лоджистик, ООО
+        <div class="width-50">
+            <div class="back-40">
+                <input id="publish-field" class="text-field" type="text">
+            </div>
         </div>
-
-        <div class="separator"></div>
-
-        <div class="back-20">
-            Проект
-        </div>
-        <div class="back-40 bottom-radius">
-            Project № 2-04/2025-Gen
-        </div>
-
+    </div>
+    <div class="separator"></div>
+    <div class="back-20">
+        Учетная запись
+    </div>
+    <div class="back-40">
+        <input id="name-field" class="text-field" type="text">
+    </div>
+    <div class="back-40 bottom-radius">
+        <input id="pass-field" class="text-field" type="password">
     </div>
 
-    <div class="flex-container top-radius bottom-radius">
+    <div class="back-20">
+        Вход по строке подключения или QR коду
+    </div>
+    <div class="flex-container">
         <div class="width-75">
-            <div class="back-20" style="border-top-left-radius: 10px;">
-                Исполнитель
-            </div>
-            <div class="back-40" style="border-bottom-left-radius: 10px;">
-                Васильков Лавренитий Петрович
+            <div class="back-40">
+                <input id="string-field" class="text-field" type="text">
             </div>
         </div>
-        <div class="width-25">
-            <div class="back-20" style="border-top-right-radius: 10px;">
-                Сумма
-            </div>
-            <div class="back-40" style="border-bottom-right-radius: 10px;">
-                3.21 млн ₽
-            </div>
+        <div class="width-25 flex-container">
+            
         </div>
     </div>
-
-    <div id="pass-block" >
-
-        <div class="back-20 top-radius">
-            Подпись
-        </div>
-        <div class="back-40">
-            <input id="pass-field" type="password">
-        </div>
-        <div class="back-20 bottom-radius">
-            Для активации биометрии, <a href="/settings/settings.html">перейдите в настройки</a> 
-        </div>
-    </div>
-
-
-
-
-
-
-
-
-
 
     <style>
         body{
@@ -94,6 +71,7 @@
             align-content: center;
             font-size: 14px;
         }
+
         .back-20 {
             width: 100%;
             height: 20px;
@@ -101,7 +79,14 @@
             text-align: center;
             align-content: center;
             font-size: 12px;
-            
+        }
+        .back-comment {
+            width: 100%;
+            height: 50vh;
+            background-color: var(--tg-theme-bg-color);
+            text-align: center;
+            align-content: center;
+            font-size: 12px;
         }
         .top-radius {
             border-radius: 10px 10px 0px 0px;
@@ -111,6 +96,19 @@
         .bottom-radius {
             border-radius: 0px 0px 10px 10px;
             margin-bottom: 10px;
+        }
+
+        .tblr {
+            border-radius: 10px 0px 0px 0px;
+        }
+        .tbrr {
+            border-radius: 0px 10px 0px 0px;
+        }
+        .bblr {
+            border-radius: 0px 0px 0px 10px;
+        }
+        .bbrr {
+            border-radius: 0px 0px 10px 0px;
         }
 
         .separator{
@@ -129,16 +127,18 @@
         .width-25{
             width: 25%;
         }
-
-        #sz-id {
-            font-size: 18px;
+        .width-50{
+            width: 50%;
+        }
+        .width-33{
+            width: calc(100% / 3)
         }
 
-        .hidden{
-            visibility: hidden;
+        .expired {
+                background-color: rgba(209, 78, 78, 0.3);
         }
 
-        #pass-field{
+        .text-field{
             outline: none;
             border-radius: 5px;
             border: 2px solid var(--tg-theme-secondary-bg-color);
@@ -149,8 +149,6 @@
             width: 90%;
             height: 35px;
         }
-
-
 
     </style>
 
