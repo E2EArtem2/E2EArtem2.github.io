@@ -24,12 +24,12 @@
     <div class="flex-container">
         <div class="width-50">
             <div class="back-40">
-                <input id="address-field" class="text-field" type="text" placeholder="адрес сервера">
+                <input id="address-field" class="text-field-inflex" type="text" placeholder="адрес сервера">
             </div>
         </div>
         <div class="width-50">
             <div class="back-40">
-                <input id="publish-field" class="text-field" type="text" placeholder="публикация">
+                <input id="publish-field" class="text-field-inflex" type="text" placeholder="публикация">
             </div>
         </div>
     </div>
@@ -47,7 +47,7 @@
     <div class="back-20">
         Вход по строке подключения или QR коду
     </div>
-    <div class="flex-container ">
+    <div class="">
         <div>
             <div class="back-40 bottom-radius">
                 <input id="string-field" class="text-field" type="text">
@@ -144,6 +144,17 @@
             color: var(--tg-theme-text-color);
             transition: all .2s;
             width: 90%;
+            height: 35px;
+        }
+        .text-field-inflex{
+            outline: none;
+            border-radius: 5px;
+            border: 2px solid var(--tg-theme-secondary-bg-color);
+            padding: 0px 10px;
+            background: var(--tg-theme-section-separator-color);
+            color: var(--tg-theme-text-color);
+            transition: all .2s;
+            width: calc(90% - 20px);
             height: 35px;
         }
 
