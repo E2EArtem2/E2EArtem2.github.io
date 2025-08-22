@@ -40,7 +40,7 @@
             <div class="back-20">
                 Договор
             </div>
-            <div class="back-40">
+            <div class="back-40 bblr">
                 5648TSL
             </div>
         </div>
@@ -48,7 +48,7 @@
             <div class="back-20">
                 Приложение
             </div>
-            <div class="back-40">
+            <div class="back-40 bbrr expired">
                 Не выбранно
             </div>
         </div>
@@ -66,7 +66,7 @@
             <div class="back-20">
                 Договор
             </div>
-            <div class="back-40">
+            <div class="back-40 bblr expired">
                 Не выбран
             </div>
         </div>
@@ -74,7 +74,7 @@
             <div class="back-20">
                 Приложение
             </div>
-            <div class="back-40">
+            <div class="back-40 bbrr expired">
                 Не выбранно
             </div>
         </div>
@@ -84,13 +84,13 @@
         Оплата
     </div>
     <div class="flex-container">
-        <div class="back-40 width-33 expired">
+        <div class="back-40 width-33 bblr expired">
             22.05.2025
         </div>
         <div class="back-40 width-33">
             1 000 000 RUB
         </div>
-        <div class="back-40 width-33">
+        <div class="back-40 width-33 bbrr">
             НДС 20%
         </div>
     </div>
@@ -109,10 +109,10 @@
         Список оборудования: 5 арт. 4752397235, 5 арт. 23521212112, 5 арт. 3523651244
     </div>
 
-    <div class="back-20 top-radius">
+    <div class="back-20 top-radius expired">
         Вложенные файлы
     </div>
-    <div class="back-40 bottom-radius">
+    <div class="back-40 bottom-radius expired">
     </div>
 
     <div class="back-20 top-radius">
@@ -163,6 +163,19 @@
         .bottom-radius {
             border-radius: 0px 0px 10px 10px;
             margin-bottom: 10px;
+        }
+
+        .tblr {
+            border-radius: 10px 0px 0px 0px;
+        }
+        .tbrr {
+            border-radius: 0px 10px 0px 0px;
+        }
+        .bblr {
+            border-radius: 0px 0px 10px 0px;
+        }
+        .bbrr {
+            border-radius: 0px 0px 0px 10px;
         }
 
         .separator{
